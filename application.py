@@ -78,6 +78,10 @@ def display_stats(team_name):
   
   print("Total players: {}".format(len(team_name)))
   
+  #print(sorted(team_name, key = lambda i: i['height']))
+  team_name = sorted(team_name, key = lambda i: i['height'])
+  #print(team_name)
+  
   for player in team_name:
     #print(player)
     total_height += player['height']
