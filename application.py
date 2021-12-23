@@ -27,12 +27,46 @@ def clean_data():
 #Evenly distributes the players in the list of players among three different teams
 def balance_teams():
   players_per_team =int(len(constants.PLAYERS) / len(constants.TEAMS))
+  experienced_count = 0
+  inexperienced_count = 0
+  experienced_list = []
+  inexperienced_list = []
+  
+  # Create a loop that counts the number of experienced and inexperienced players on the team
+  for player in constants.PLAYERS:
+    if player['experience'] == 'YES':
+      experienced_count += 1
+    elif player['experience'] == 'NO':
+      inexperienced_count += 1
+  inexperienced_per_team = int(inexperienced_count / len(constants.TEAMS))
+  experienced_per_team = int(inexperienced_count / len(constants.TEAMS))
+  
+  #create two lists - one with all the experienced players and another with all the inexperienced players
+  for player in player_list:
+    if player['experience'] == True:
+      experienced_list.append(player)
+    elif player['experience'] == False:
+      inexperienced_list.append(player)
+      
+  for x in range(0, experienced_per_team):    
+    panthers.append(experienced_list.pop())
+    bandits.append(experienced_list.pop())
+    warriors.append(experienced_list.pop())
+  for x in range(0, inexperienced_per_team):    
+    panthers.append(inexperienced_list.pop())
+    bandits.append(inexperienced_list.pop())
+    warriors.append(inexperienced_list.pop())
+  
+      
+  #add inexperienced players to the 3 teams
+  """
   for x in range(0, players_per_team):    
     panthers.append(player_list.pop())
   for x in range(0, players_per_team):
     bandits.append(player_list.pop())
   for x in range(0, players_per_team):
     warriors.append(player_list.pop())
+  """
  
 #Takes in a team's name as input and displays the stats for a particuar team
 def display_stats(team_name):
