@@ -86,8 +86,13 @@ def basketball_stats():
         print("Team: Warriors Stats")
         print("--------------------")
         display_stats(warriors)
-      
+      else: 
+        print("\nPlease enter a valid response(a/b/c)")
+        continue
       third_response = input("\nDo you want to return to the beginning of the program? (Enter yes/no): ")
+      while third_response.lower() != 'yes' and third_response.lower() != 'no':
+        third_response = input("\nPlease enter a valid response. Do you want to return to the beginning of the program? (Enter yes/no): ")
+        
 
       if third_response.lower() == "yes":
         continue
