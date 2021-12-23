@@ -24,7 +24,7 @@ def clean_data():
     }
     player_list.append(dictionary)
     
-#Evenly distributes the players in the list of players among three different teams
+#Evenly distributes the players
 def balance_teams():
   players_per_team =int(len(constants.PLAYERS) / len(constants.TEAMS))
   experienced_count = 0
@@ -41,7 +41,7 @@ def balance_teams():
   inexperienced_per_team = int(inexperienced_count / len(constants.TEAMS))
   experienced_per_team = int(inexperienced_count / len(constants.TEAMS))
   
-  #create two lists - one with all the experienced players and another with all the inexperienced players
+  #Exceeds Expectations: balances the number of inexperienced and experienced players on each team
   for player in player_list:
     if player['experience'] == True:
       experienced_list.append(player)
@@ -57,17 +57,6 @@ def balance_teams():
     bandits.append(inexperienced_list.pop())
     warriors.append(inexperienced_list.pop())
   
-      
-  #add inexperienced players to the 3 teams
-  """
-  for x in range(0, players_per_team):    
-    panthers.append(player_list.pop())
-  for x in range(0, players_per_team):
-    bandits.append(player_list.pop())
-  for x in range(0, players_per_team):
-    warriors.append(player_list.pop())
-  """
- 
 #Takes in a team's name as input and displays the stats for a particuar team
 def display_stats(team_name):
   experienced_count = 0
@@ -77,13 +66,11 @@ def display_stats(team_name):
   guardians_list = []
   
   print("Total players: {}".format(len(team_name)))
-  
-  #print(sorted(team_name, key = lambda i: i['height']))
+  #Exceeds Expectations: Sorts the players by height
   team_name = sorted(team_name, key = lambda i: i['height'])
-  #print(team_name)
+
   
   for player in team_name:
-    #print(player)
     total_height += player['height']
     if player['experience'] == True:
       experienced_count += 1
@@ -104,11 +91,12 @@ def display_stats(team_name):
   
   print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   
-  #Saved the Team's Analysis as a dictionary and returns it when the method has executed
+  #Exceeds Expectations: Saved the Team's Analysis as a dictionary and returns it when the method has executed
   team_stats = {'total_experienced' : experienced_count, 'total_inexperienced' : inexperienced_count, 'height': total_height/len(team_name)}
   return team_stats
   
 # Main function in the program that prompts the user and displays the teams' stats
+# Exceeds Expectations: The user is returned to the main menu until they select "Quit"
 def basketball_stats():
   while True: 
     print("\nBASKETBALL TEAM STATS TOOL")
@@ -139,7 +127,9 @@ def basketball_stats():
       else: 
         print("\nPlease enter a valid response(a/b/c)")
         continue       
-        
+    else:
+      print("\nPlease enter a valid response(a/b)")
+      continue
     
 if __name__ == "__main__":
   clean_data()
