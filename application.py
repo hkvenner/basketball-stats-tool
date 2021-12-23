@@ -102,7 +102,11 @@ def display_stats(team_name):
   print("\nGuardians: ")
   print(",".join(guardians_list))
   
-  print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+  print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+  
+  #Saved the Team's Analysis as a dictionary and returns it when the method has executed
+  team_stats = {'total_experienced' : experienced_count, 'total_inexperienced' : inexperienced_count, 'height': total_height/len(team_name)}
+  return team_stats
   
 # Main function in the program that prompts the user and displays the teams' stats
 def basketball_stats():
@@ -120,17 +124,17 @@ def basketball_stats():
       if second_response.lower() == "a":
         print("Team: Panthers Stats")
         print("--------------------")
-        display_stats(panthers)
+        panthers_stats = display_stats(panthers)
         continue
       elif second_response.lower() == "b":
         print("Team: Bandits Stats")
         print("--------------------")
-        display_stats(bandits)
+        bandits_stats =display_stats(bandits)
         continue
       elif second_response.lower() == "c":
         print("Team: Warriors Stats")
         print("--------------------")
-        display_stats(warriors)
+        warriors_stats =display_stats(warriors)
         continue
       else: 
         print("\nPlease enter a valid response(a/b/c)")
