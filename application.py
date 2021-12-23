@@ -5,7 +5,7 @@ panthers=[]
 bandits =[]
 warriors=[]
 
-
+#cleans player data from the player list in the constants file
 def clean_data():
   
   for item in constants.PLAYERS:    
@@ -24,83 +24,17 @@ def clean_data():
     }
     player_list.append(dictionary)
     
-  #for item in player_list:
-    #print(item)
-    
-    #print(height, experience)
-    #for item in guardians: 
-      #print(item)
-"""
-Create a balance_teams function
-Now that the player data has been cleaned, balance the players across the three teams: Panthers, Bandits and Warriors. Make sure the teams have the same number of total players on them when your team balancing function has finished.
-
-HINT: To find out how many players should be on each team, divide the length of players by the number of teams. Ex: num_players_team = len(PLAYERS) / len(TEAMS)
-""" 
+#Evenly distributes the players in the list of players among three different teams
 def balance_teams():
   players_per_team =int(len(constants.PLAYERS) / len(constants.TEAMS))
- # panthers=[]
- # bandits =[]
- # warriors=[]
-  
   for x in range(0, players_per_team):    
     panthers.append(player_list.pop())
   for x in range(0, players_per_team):
     bandits.append(player_list.pop())
   for x in range(0, players_per_team):
     warriors.append(player_list.pop())
-  """
-  print(players_per_team)
-  print(len(panthers))
-  print(len(bandits))
-  print(len(warriors))
-  """
  
-# add error checking if the user does not select a or b 
-def basketball_stats():
-  while True: 
-    #player_list =[]
-    #panthers=[]
-    #bandits =[]
-    #warriors=[]
-    print("BASKETBALL TEAM STATS TOOL")
-    print("\n\n---- MENU----")
-    print("\n\nHere are your choices: \n A) Display Team Stats\n B) Quit")
-    first_response = input("\n\nEnter an option: ")
-    if first_response.lower() == "b": 
-      print("\nI hope you play again soon!")
-      break
-    if first_response.lower() == "a":
-      print("\n\nA) Panthers \nB) Bandits \nC) Warriors")
-      #clean_data()
-      #balance_teams()
-      second_response = input("\nEnter an option: ")
-      if second_response.lower() == "a":
-        print("Team: Panthers Stats")
-        print("--------------------")
-        display_stats(panthers)
-      elif second_response.lower() == "b":
-        print("Team: Bandits Stats")
-        print("--------------------")
-        display_stats(bandits)
-      elif second_response.lower() == "c":
-        print("Team: Warriors Stats")
-        print("--------------------")
-        display_stats(warriors)
-      else: 
-        print("\nPlease enter a valid response(a/b/c)")
-        continue
-      third_response = input("\nDo you want to return to the beginning of the program? (Enter yes/no): ")
-      while third_response.lower() != 'yes' and third_response.lower() != 'no':
-        third_response = input("\nPlease enter a valid response. Do you want to return to the beginning of the program? (Enter yes/no): ")
-        
-
-      if third_response.lower() == "yes":
-        continue
-      elif third_response.lower() == "no":
-        print("\nThanks for checking out the stats!")
-        break
-        
-    
+#Takes in a team's name as input and displays the stats for a particuar team
 def display_stats(team_name):
   experienced_count = 0
   inexperienced_count = 0
@@ -130,43 +64,45 @@ def display_stats(team_name):
   print("\nGuardians: ")
   print(",".join(guardians_list))
   
-
-             
-  
-
-"""
-    Team: Panthers Stats
---------------------
-Total players: 6
-Total experienced: 3
-Total inexperienced: 3
-Average height: 42.5
-
-Players on Team:
-  Karl Saygan, Chloe Alaska, Phillip Helm, Suzane Greenberg, Herschel Krustofski, Joe Smith
-
-Guardians:
-  Heather Bledsoe, David Alaska, Jamie Alaska, Thomas Helm, Eva Jones, Henrietta Dumas, Hyman Krustofski, Rachel Krustofski, Jim Smith, Jan Smith
-  
-"""   
-"""
-
- Here are your choices:
-  A) Display Team Stats
-  B) Quit
-
-Enter an option:  A
-
-A) Panthers
-B) Bandits
-C) Warriors
-"""
-"""     
-clean_data()
-balance_teams()
-display_stats(panthers)
-"""
-
-clean_data()
-balance_teams()
-basketball_stats()
+# Main function in the program that prompts the user and displays the teams' stats
+def basketball_stats():
+  while True: 
+    print("\nBASKETBALL TEAM STATS TOOL")
+    print("\n\n---- MENU----")
+    print("\n\nHere are your choices: \n A) Display Team Stats\n B) Quit")
+    first_response = input("\n\nEnter an option: ")
+    if first_response.lower() == "b": 
+      print("\nI hope you play again soon!")
+      break
+    if first_response.lower() == "a":
+      print("\n\nA) Panthers \nB) Bandits \nC) Warriors")
+      second_response = input("\nEnter an option: ")
+      if second_response.lower() == "a":
+        print("Team: Panthers Stats")
+        print("--------------------")
+        display_stats(panthers)
+      elif second_response.lower() == "b":
+        print("Team: Bandits Stats")
+        print("--------------------")
+        display_stats(bandits)
+      elif second_response.lower() == "c":
+        print("Team: Warriors Stats")
+        print("--------------------")
+        display_stats(warriors)
+      else: 
+        print("\nPlease enter a valid response(a/b/c)")
+        continue
+      third_response = input("\nDo you want to return to the beginning of the program? (Enter yes/no): ")
+      while third_response.lower() != 'yes' and third_response.lower() != 'no':
+        third_response = input("\nPlease enter a valid response. Do you want to return to the beginning of the program? (Enter yes/no): ")
+        
+      if third_response.lower() == "yes":
+        continue
+      elif third_response.lower() == "no":
+        print("\nThanks for checking out the stats!")
+        break      
+    
+if __name__ == "__main__":
+  clean_data()
+  balance_teams()
+  basketball_stats()
