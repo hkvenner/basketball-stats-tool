@@ -98,6 +98,8 @@ def display_stats(team_name):
   print("\nGuardians: ")
   print(",".join(guardians_list))
   
+  print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+  
 # Main function in the program that prompts the user and displays the teams' stats
 def basketball_stats():
   while True: 
@@ -115,26 +117,21 @@ def basketball_stats():
         print("Team: Panthers Stats")
         print("--------------------")
         display_stats(panthers)
+        continue
       elif second_response.lower() == "b":
         print("Team: Bandits Stats")
         print("--------------------")
         display_stats(bandits)
+        continue
       elif second_response.lower() == "c":
         print("Team: Warriors Stats")
         print("--------------------")
         display_stats(warriors)
+        continue
       else: 
         print("\nPlease enter a valid response(a/b/c)")
-        continue
-      third_response = input("\nDo you want to return to the beginning of the program? (Enter yes/no): ")
-      while third_response.lower() != 'yes' and third_response.lower() != 'no':
-        third_response = input("\nPlease enter a valid response. Do you want to return to the beginning of the program? (Enter yes/no): ")
+        continue       
         
-      if third_response.lower() == "yes":
-        continue
-      elif third_response.lower() == "no":
-        print("\nThanks for checking out the stats!")
-        break      
     
 if __name__ == "__main__":
   clean_data()
