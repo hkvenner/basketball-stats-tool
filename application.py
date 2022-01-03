@@ -24,7 +24,7 @@ def clean_data():
     }
     player_list.append(dictionary)
     
-#Evenly distributes the players
+#Evenly distributes the players in the list of players among three different teams
 def balance_teams():
   players_per_team =int(len(constants.PLAYERS) / len(constants.TEAMS))
   experienced_count = 0
@@ -41,7 +41,7 @@ def balance_teams():
   inexperienced_per_team = int(inexperienced_count / len(constants.TEAMS))
   experienced_per_team = int(inexperienced_count / len(constants.TEAMS))
   
-  #Exceeds Expectations: balances the number of inexperienced and experienced players on each team
+  #Exceeds Expectations: create two lists - one with all the experienced players and another with all the inexperienced players
   for player in player_list:
     if player['experience'] == True:
       experienced_list.append(player)
@@ -113,16 +113,19 @@ def basketball_stats():
         print("Team: Panthers Stats")
         print("--------------------")
         panthers_stats = display_stats(panthers)
+        panthers.append(panthers_stats)
         continue
       elif second_response.lower() == "b":
         print("Team: Bandits Stats")
         print("--------------------")
         bandits_stats =display_stats(bandits)
+        bandits.append(bandits_stats)
         continue
       elif second_response.lower() == "c":
         print("Team: Warriors Stats")
         print("--------------------")
         warriors_stats =display_stats(warriors)
+        warriors.append(warriors_stats)
         continue
       else: 
         print("\nPlease enter a valid response(a/b/c)")
